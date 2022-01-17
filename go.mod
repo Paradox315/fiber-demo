@@ -1,4 +1,4 @@
-module fiber-demo
+module github.com/Paradox315/fiberx
 
 go 1.17
 
