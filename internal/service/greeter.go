@@ -2,30 +2,50 @@ package service
 
 import (
 	"context"
-	v1 "fiber-demo/api/helloworld/v1"
 	"fiber-demo/internal/biz"
 
+	pb "fiber-demo/api/helloworld/v1"
 	"github.com/go-kratos/kratos/v2/log"
 )
 
-// GreeterService is a greeter service.
 type GreeterService struct {
-	v1.UnimplementedGreeterServer
+	pb.UnimplementedGreeterServer
 
 	uc  *biz.GreeterUsecase
 	log *log.Helper
 }
 
-// NewGreeterService new a greeter service.
 func NewGreeterService(uc *biz.GreeterUsecase, logger log.Logger) *GreeterService {
 	return &GreeterService{uc: uc, log: log.NewHelper(logger)}
 }
 
-// SayHello implements helloworld.GreeterServer
-func (s *GreeterService) SayHello(ctx context.Context, in *v1.HelloRequest) (*v1.HelloReply, error) {
-	s.log.WithContext(ctx).Infof("SayHello Received: %v", in.GetName())
-	if in.GetName() == "error" {
-		return nil, v1.ErrorUserNotFound("user not found: %s", in.GetName())
-	}
-	return &v1.HelloReply{Message: "Hello " + in.GetName()}, nil
+func (s *GreeterService) List(ctx context.Context, req *pb.PageRequest) (*pb.HelloReply, error) {
+	s.log.WithContext(ctx).Infof("List Received: %v", req.String())
+	return &pb.HelloReply{
+		Message: req.String(),
+	}, nil
+}
+func (s *GreeterService) Get(ctx context.Context, req *pb.HelloRequest) (*pb.HelloReply, error) {
+	s.log.WithContext(ctx).Infof("Get Received: %v", req.String())
+	return &pb.HelloReply{
+		Message: req.String(),
+	}, nil
+}
+func (s *GreeterService) Add(ctx context.Context, req *pb.HelloRequest) (*pb.HelloReply, error) {
+	s.log.WithContext(ctx).Infof("Add Received: %v", req.String())
+	return &pb.HelloReply{
+		Message: req.String(),
+	}, nil
+}
+func (s *GreeterService) Edit(ctx context.Context, req *pb.HelloRequest) (*pb.HelloReply, error) {
+	s.log.WithContext(ctx).Infof("Edit Received: %v", req.String())
+	return &pb.HelloReply{
+		Message: req.String(),
+	}, nil
+}
+func (s *GreeterService) Del(ctx context.Context, req *pb.HelloRequest) (*pb.HelloReply, error) {
+	s.log.WithContext(ctx).Infof("Del Received: %v", req.String())
+	return &pb.HelloReply{
+		Message: req.String(),
+	}, nil
 }

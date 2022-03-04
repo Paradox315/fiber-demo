@@ -3,6 +3,7 @@ GOPATH:=$(shell go env GOPATH)
 VERSION=$(shell git describe --tags --always)
 INTERNAL_PROTO_FILES=$(call RWILDCARD,internal/,*.proto)
 API_PROTO_FILES=$(call RWILDCARD,api/,*.proto)
+ERROR_PROTO_FILES=$(call RWILDCARD,api/,error*.proto)
 
 .PHONY: init
 # init env
@@ -11,6 +12,7 @@ init:
 	go get -u google.golang.org/protobuf/cmd/protoc-gen-go
 	go get -u google.golang.org/grpc/cmd/protoc-gen-go-grpc
 	go get -u github.com/go-kratos/kratos/cmd/protoc-gen-go-http/v2
+	go get -u github.com/go-kratos/kratos/cmd/protoc-gen-go-errors/v2
 	go get -u github.com/go-kratos/kratos/cmd/protoc-gen-go-errors/v2
 	go get -u github.com/gogo/protobuf/proto
 	go get -u github.com/gogo/protobuf/gogoproto
@@ -21,15 +23,11 @@ init:
 .PHONY: errors
 # generate errors code
 errors:
-	@$(foreach proto_file,$(API_PROTO_FILES), \
-    		echo $(proto_file); \
-            protoc  --proto_path=. \
-                    --proto_path=./third_party \
-                    --gogoslick_out=paths=source_relative:. \
-                    --go-errors_out=paths=source_relative:. \
-            $(proto_file); \
-    )\
-    echo 'generate errors proto file done!'
+	protoc --proto_path=. \
+                   --proto_path=./third_party \
+                   --go_out=paths=source_relative:. \
+                   --go-errors_out=paths=source_relative:. \
+                   $(ERROR_PROTO_FILES)
 
 .PHONY: config
 # generate internal proto

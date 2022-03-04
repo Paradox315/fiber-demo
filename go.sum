@@ -4,8 +4,8 @@ github.com/BurntSushi/toml v0.3.1/go.mod h1:xHWCNGjB5oqiDr8zfno3MHue2Ht5sIBksp03
 github.com/OneOfOne/xxhash v1.2.2/go.mod h1:HSdplMjZKSmBqAxg5vPj2TmRDmfkzw+cTzAElWljhcU=
 github.com/Paradox315/kratos/contrib/registry/consul/v2 v2.0.0-20220216150651-8573d06d9606 h1:CqBwRsIXlQg3UlxjStbpHnDeAknL36478/hFJnTf//U=
 github.com/Paradox315/kratos/contrib/registry/consul/v2 v2.0.0-20220216150651-8573d06d9606/go.mod h1:Nx0RWQg9QjKCsFCAepz3w0HQ7IUUaYMCnkBXE0HqZX4=
-github.com/Paradox315/kratos/v2 v2.1.8 h1:iB+xQ7JTzPYCYkPVVncoH8BCEJ2cpMibOsqJrU7jOMk=
-github.com/Paradox315/kratos/v2 v2.1.8/go.mod h1:KaP6+/dxEVRwEWPHKngKFBS4kTTHTUmJAWubY92rOD8=
+github.com/Paradox315/kratos/v2 v2.1.9 h1:Z7WL8FnxDwMftd32PH1NTgVXINl9UXNZMKNJe/9tjX0=
+github.com/Paradox315/kratos/v2 v2.1.9/go.mod h1:KaP6+/dxEVRwEWPHKngKFBS4kTTHTUmJAWubY92rOD8=
 github.com/StackExchange/wmi v1.2.1/go.mod h1:rcmrprowKIVzvc+NUiLncP2uuArMWLCbu9SBzvHz7e8=
 github.com/andybalholm/brotli v1.0.4 h1:V7DdXeJtZscaqfNuAdSRuRFzuiKlHSC/Zh3zl9qY3JY=
 github.com/andybalholm/brotli v1.0.4/go.mod h1:fO7iG3H7G2nSZ7m0zPUDn85XEX2GTukHGRSepvi9Eig=

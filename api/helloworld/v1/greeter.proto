@@ -11,17 +11,52 @@ option java_outer_classname = "HelloWorldProtoV1";
 
 // The greeting service definition.
 service Greeter {
-  // Sends a greeting
-  rpc SayHello (HelloRequest) returns (HelloReply)  {
-        option (google.api.http) = {
-            get: "/helloworld/:name"
-        };
-    }
+  // Gets a greeting for a user.
+  rpc List (PageRequest) returns (HelloReply)  {
+    option (google.api.http) = {
+      get: "/list"
+    };
+  }
+
+  // Gets a greeting for a user.
+  rpc Get (HelloRequest) returns (HelloReply)  {
+    option (google.api.http) = {
+      get: "/get/:name"
+    };
+  }
+
+  // Adds a greeting for a user.
+  rpc Add (HelloRequest) returns (HelloReply)  {
+    option (google.api.http) = {
+      post: "/",
+      body: "*"
+    };
+  }
+
+  // Adds a greeting for a user.
+  rpc Edit (HelloRequest) returns (HelloReply)  {
+    option (google.api.http) = {
+      put: "/",
+      body: "*"
+    };
+  }
+
+  // Adds a greeting for a user.
+  rpc Del (HelloRequest) returns (HelloReply)  {
+    option (google.api.http) = {
+      delete: "/"
+    };
+  }
 }
 
 // The request message containing the user's name.
 message HelloRequest {
   string name = 1;
+}
+
+message PageRequest {
+  int32 page_num = 1;
+  int32 page_size = 2;
 }
 
 // The response message containing the greetings
